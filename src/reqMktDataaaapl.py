@@ -25,22 +25,22 @@ class TestApp(EWrapper, EClient):
         TickTypeEnum.to_str(tickType), "Size:", size)
 
 
-    def main():
-        app = TestApp()
-        app.connect("127.0.0.1", 7497, 0)
-        contract = Contract()
-        contract.symbol = "AAPL"
-        contract.secType = "STK"
-        contract.exchange = "SMART"
-        contract.currency = "USD"
-        contract.primaryExchange = "NASDAQ"
+def main():
+    app = TestApp()
+    app.connect("127.0.0.1", 7496, 0)
+    contract = Contract()
+    contract.symbol = "AAPL"
+    contract.secType = "STK"
+    contract.exchange = "SMART"
+    contract.currency = "USD"
+    contract.primaryExchange = "NASDAQ"
 
-        # switch to delayed-frozen data if live is not available
-        app.reqMarketDataType(4)
+    # switch to delayed-frozen data if live is not available
+    app.reqMarketDataType(4)
 
-        app.reqMktData(1, contract, "", False, False, [])
+    app.reqMktData(1, contract, "", False, False, [])
 
-        app.run()
+    app.run()
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
